@@ -4,16 +4,19 @@ Uses Adafruit DHT library
 """
 import sys
 import requests
+import seeed_dht
 import Adafruit_DHT
+
 from socket import gethostname
 
 url = 'http://172.20.10.6/sensorTest.php'
-sensor = Adafruit_DHT.DHT11
+
+sensor = seeed_dht.DHT("11", D4)
 pin = D4 
 
 # Try to grab a sensor reading.  Use the read_retry method which will retry up
 # to 15 times to get a sensor reading (waiting 2 seconds between each retry).
-humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+humidity, temperature = sensor.read()
 
 # Un-comment the line below to convert the temperature to Fahrenheit.
 # temperature = temperature * 9/5.0 + 32
