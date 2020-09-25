@@ -27,7 +27,7 @@ if humidity is not None and temperature is not None:
     data = {'hostname': hostname, 'temperature': temperature, 'humidity': humidity}
     result = requests.post(url, data=data)
     print (result)
-   print (result.text)
+    print (result.text)
     print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
 else:
     print ('Failed reading sensor, will not post')
