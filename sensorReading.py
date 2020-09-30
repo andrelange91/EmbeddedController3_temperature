@@ -14,7 +14,7 @@
 #	DHT2301 = 3
 
 
-from requests import *
+import requests
 from grovepi import *
 
 dht_sensor_port = 4 # Connect to D4
@@ -32,8 +32,8 @@ while True:
 		print ("Humidity =", hum, "%")
 
 		# prepare and post data.
-		data = {hum, temp} # prepare data for post.
-		requests.requests.post(url, data = data)
+		data = {'Temperature' : temp, 'Humidity' : hum} # prepare data for post.
+		requests.post(url, data)
 
 	except	(IOError, TypeError) as e:
 		print ("Error", e)
