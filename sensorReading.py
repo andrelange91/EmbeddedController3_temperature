@@ -1,36 +1,40 @@
-#!/usr/bin/python
-"""
-Uses Adafruit DHT library
-"""
-import sys
-import requests
-import seeed_dht
-import Adafruit_DHT
+#############################################
+##
+##  Temperature & Humidity sensor readings
+##  Data posted to url for saving.
+##
+##	By Andre Lange 2020
+##
+#############################################
 
-from socket import gethostname
+# dht(pin, module_type)
+#	DHT11   = 0
+#	DHT22   = 1
+#	DHT21   = 2
+#	DHT2301 = 3
 
-url = 'http://172.20.10.6/sensorTest.php'
 
-sensor = seeed_dht.DHT("11", D4)
-pin = D4 
+from requests import *
+from grovepi import *
 
-# Try to grab a sensor reading.  Use the read_retry method which will retry up
-# to 15 times to get a sensor reading (waiting 2 seconds between each retry).
-humidity, temperature = sensor.read()
+dht_sensor_port = 4 # Connect to D4
+module_type = 0 # 0 for DHT11 type sensor.
+url = 'http://172.20.10.6/sensor/record'
 
-# Un-comment the line below to convert the temperature to Fahrenheit.
-# temperature = temperature * 9/5.0 + 32
 
-# Note that sometimes you won't get a reading and
-# the results will be null (because Linux can't
-# guarantee the timing of calls to read the sensor).
-# If this happens try again!
-if humidity is not None and temperature is not None:
-    hostname = gethostname()
-    data = {'hostname': hostname, 'temperature': temperature, 'humidity': humidity}
-    result = requests.post(url, data=data)
-    print (result)
-    print (result.text)
-    print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
-else:
-    print ('Failed reading sensor, will not post')
+while True:
+	try:
+		time.sleep(6) # sleep before taking another reading (60 seconds between readings)
+		[ temp, hum ] = dht(dht_sensor_port,module_type) # sensor reading
+
+		# print for reading in console.
+		print ( "temp=", temp, "C")
+		print ("Humidity =", hum, "%")
+
+		# prepare and post data.
+		data = {hum, temp} # prepare data for post.
+		requests.requests.post(url, data = data)
+
+	except	(IOError, TypeError) as e:
+		print ("Error", e)
+
