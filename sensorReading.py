@@ -32,7 +32,7 @@ while True:
 		print ("Humidity =", hum, "%")
 
 		# prepare and post data.
-		data = {'Temperature' : temp, 'Humidity' : hum} # prepare data for post.
+		data = {'temperature' : temp, 'humidity' : hum} # prepare data for post.
 		requests.post(url, data)
 
 	except	(IOError, TypeError) as e:
