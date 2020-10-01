@@ -17,13 +17,13 @@ class SensorController
         $html = $this->twig->render('FrontPage.twig', ["routeName" => $route->getName()]);
 
         $registerTime = date("Y-m-d H:i:s");
-        $temperature = $args['Temperature'];
-        $location = $args['Location'];
+        $temperature = $args['temperature'];
+        $location = "Odense SØ";
         $url = "http://172.20.10.5/api/insertTemp";
         $data = array("temperature"=>$temperature,"registerTime"=>$registerTime, "location"=>$location);
 
         ApiHelper::RegisterTemp($url, $data);
-        
+
         $response->getBody()->write($html);
         return $response;
     }
