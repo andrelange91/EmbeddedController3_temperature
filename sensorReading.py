@@ -24,7 +24,7 @@ url = 'http://172.20.10.6/sensor/record'
 
 while True:
 	try:
-		time.sleep(6) # sleep before taking another reading (60 seconds between readings)
+		time.sleep(600) # sleep before taking another reading (60 seconds between readings)
 		[ temp, hum ] = dht(dht_sensor_port,module_type) # sensor reading
 
 		# print for reading in console.
