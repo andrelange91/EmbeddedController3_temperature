@@ -18,7 +18,7 @@ class HomeController
     {
         $route = RouteContext::fromRequest($request)->getRoute();
         
-        $html = $this->twig->render('FrontPage.twig', ["routeName" => $route->getName()]);
+        $html = $this->twig->render('Frontpage.twig', ["routeName" => $route->getName()]);
 
         $response->getBody()->write($html);
         return $response;
