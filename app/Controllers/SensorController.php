@@ -19,6 +19,10 @@ class SensorController
         $registerTime = date("Y-m-d H:i:s");
         $temperature = $args['temperature'];
         $location = "Odense SØ";
+        var_dump($temperature);
+        var_dump($registerTime);
+        die();
+        
         $url = "http://172.20.10.5/api/insertTemp";
         $data = array("temperature"=>$temperature,"registerTime"=>$registerTime, "location"=>$location);
 
