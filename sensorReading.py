@@ -34,7 +34,8 @@ while True:
 		data = {'Temperature' : temp, 'Location' : "Odense S"} # prepare data for post.
 		r = requests.post(url, data)
 		print (r.status_code)
-
+		print (r.text)
+		
 	except	(IOError, TypeError) as e:
 		print ("Error", e)
 
