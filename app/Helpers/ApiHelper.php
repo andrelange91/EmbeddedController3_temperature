@@ -32,7 +32,7 @@ class ApiHelper{
         // call the api and update with a new temp reading
         $options = array(
             'http' => array(
-                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                 'header'  => "Content-type: application/json",
                 'method'  => 'POST',
                 'content' => http_build_query($data)
             )
