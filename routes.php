@@ -8,4 +8,6 @@ $app->get('/', HomeController::class . ':FrontPage')->setName("frontPage");
 
 
 // post temp data.
-$app->post('/sensor/record', SensorController::class . ':Record')->setName("sensorReading");
+$app->map(["GET", "POST"], '/sensor/record', SensorController::class . ':Record');
+// $app->get('/sensor/record', SensorController::class . ':Record')->setName("sensorReading");
+// $app->post('/sensor/record', SensorController::class . ':Record')->setName("sensorReading");
