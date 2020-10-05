@@ -22,7 +22,7 @@ module_type = 0 # 0 for DHT11 type sensor.
 url = 'http://127.0.0.1/sensor/record'
 
 
-while True:
+# while True:
 	try:
 		[ temp, hum ] = dht(dht_sensor_port,module_type) # sensor reading
 
@@ -39,4 +39,4 @@ while True:
 	except	(IOError, TypeError) as e:
 		print ("Error", e)
 
-	time.sleep(120) # sleep before taking another reading (2 minutes between readings)
+	# time.sleep(120) # sleep before taking another reading (2 minutes between readings)
