@@ -19,7 +19,7 @@ from grovepi import *
 
 dht_sensor_port = 4 # Connect to D4
 module_type = 0 # 0 for DHT11 type sensor.
-url = 'http://10.130.54.56/sensor/record'
+url = 'http://127.0.0.1/sensor/record'
 
 
 while True:
