@@ -35,8 +35,7 @@ while True:
 		r = requests.post(url, data)
 		print (r.status_code)
 
-		time.sleep(120) # sleep before taking another reading (2 minutes between readings)
-
 	except	(IOError, TypeError) as e:
 		print ("Error", e)
 
+	time.sleep(120) # sleep before taking another reading (2 minutes between readings)
