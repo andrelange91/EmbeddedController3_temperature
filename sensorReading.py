@@ -22,7 +22,7 @@ module_type = 0 # 0 for DHT11 type sensor.
 url = 'http://127.0.0.1/sensor/record'
 
 
-# while True:
+while True:
 	try:
 		[ temp, hum ] = dht(dht_sensor_port,module_type) # sensor reading
 
