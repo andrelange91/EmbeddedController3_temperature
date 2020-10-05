@@ -20,14 +20,12 @@ class SensorController
         // $html = $this->twig->render('FrontPage.twig', ["routeName" => $route->getName()]);
 
         $data = [];
-        
+
         parse_str($request->getBody()->getContents(), $data);
 
-        var_dump($data);
-
         $registerTime = date('Y-m-d H:i:s');
-        $temperature = $data->Temperature;
-        $location = $data->Location;
+        $temperature = $data['Temperature'];
+        $location = $data['Location'];
 
         $url = "http://10.130.54.60/api/insertTemp";
         $data = array("Temperature"=>$temperature,"RegisterTime"=>$registerTime, "Location"=>$location);
