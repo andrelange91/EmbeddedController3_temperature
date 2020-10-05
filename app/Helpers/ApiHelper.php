@@ -62,7 +62,8 @@ class ApiHelper{
         $err = curl_error($curl);
 
         curl_close($curl);
-
+        var_dump($err);
+        die();
         if ($err) {
         echo "cURL Error #:" . $err;
         } else {
