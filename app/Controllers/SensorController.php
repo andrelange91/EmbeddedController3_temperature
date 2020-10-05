@@ -12,6 +12,9 @@ class SensorController
 
     public function Record(Request $request, Response $response, $args)
     {
+        if(strtolower($request->getMethod()) == "get"){
+            die("hello");
+        }
         $route = RouteContext::fromRequest($request)->getRoute();
         
         // $html = $this->twig->render('FrontPage.twig', ["routeName" => $route->getName()]);
