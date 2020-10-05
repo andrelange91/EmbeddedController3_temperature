@@ -14,18 +14,20 @@ class SensorController
     {
         $route = RouteContext::fromRequest($request)->getRoute();
         
-        $html = $this->twig->render('FrontPage.twig', ["routeName" => $route->getName()]);
+        // $html = $this->twig->render('FrontPage.twig', ["routeName" => $route->getName()]);
 
-        $registerTime = date("Y-m-d H:i:s");
-        $temperature = $args['temperature'];
-        $location = "Odense SØ";
+        $data = json_decode($request->getBody());
 
-        $url = "http://172.20.10.5/api/insertTemp";
-        $data = array("temperature"=>$temperature,"registerTime"=>$registerTime, "location"=>$location);
+        $registerTime = date('Y-m-d H:i:s');
+        $temperature = $data->Temperature;
+        $location = $data->Location;
+
+        $url = "http://10.130.54.56/api/insertTemp";
+        $data = array("Temperature"=>$temperature,"RegisterTime"=>$registerTime, "Location"=>$location);
 
         ApiHelper::RegisterTemp($url, $data);
 
-        $response->getBody()->write($html);
+        $response->getBody()->write("Data Recorded");
         return $response;
     }
 }

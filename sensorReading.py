@@ -19,7 +19,7 @@ from grovepi import *
 
 dht_sensor_port = 4 # Connect to D4
 module_type = 0 # 0 for DHT11 type sensor.
-url = 'http://172.20.10.6/sensor/record'
+url = 'http://10.130.54.56/sensor/record'
 
 
 while True:
@@ -32,7 +32,7 @@ while True:
 		print ("Humidity =", hum, "%")
 
 		# prepare and post data.
-		data = {'temperature' : temp, 'humidity' : hum} # prepare data for post.
+		data = {'Temperature' : temp, 'Location' : "Odense S"} # prepare data for post.
 		requests.post(url, data)
 
 	except	(IOError, TypeError) as e:
