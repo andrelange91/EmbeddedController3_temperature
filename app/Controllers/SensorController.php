@@ -12,12 +12,16 @@ class SensorController
 
     public function Record(Request $request, Response $response, $args)
     {
-        die("hello");
+        if(strtolower($request->getMethod()) == "get"){
+            die("hello");
+        }
         $route = RouteContext::fromRequest($request)->getRoute();
         
         // $html = $this->twig->render('FrontPage.twig', ["routeName" => $route->getName()]);
 
         $data = json_decode($request->getBody());
+        
+        var_dump($request->getBody()->getContents());
 
         $registerTime = date('Y-m-d H:i:s');
         $temperature = $data->Temperature;
