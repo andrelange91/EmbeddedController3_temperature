@@ -20,7 +20,7 @@ class SensorController
         // $html = $this->twig->render('FrontPage.twig', ["routeName" => $route->getName()]);
 
         $data = json_decode($request->getBody());
-
+        var_dump($data);
         $registerTime = date('Y-m-d H:i:s');
         $temperature = $data->Temperature;
         $location = $data->Location;
