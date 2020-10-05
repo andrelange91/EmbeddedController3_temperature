@@ -21,7 +21,7 @@ class SensorController
 
         $data = json_decode($request->getBody());
         
-        var_dump($request->getBody());
+        var_dump($request->getBody()->getContents());
 
         $registerTime = date('Y-m-d H:i:s');
         $temperature = $data->Temperature;
