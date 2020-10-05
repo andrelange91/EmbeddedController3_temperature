@@ -24,7 +24,6 @@ url = 'http://10.130.54.56/sensor/record'
 
 while True:
 	try:
-		time.sleep(600) # sleep before taking another reading (60 seconds between readings)
 		[ temp, hum ] = dht(dht_sensor_port,module_type) # sensor reading
 
 		# print for reading in console.
@@ -34,6 +33,8 @@ while True:
 		# prepare and post data.
 		data = {'Temperature' : temp, 'Location' : "Odense S"} # prepare data for post.
 		requests.post(url, data)
+		
+		time.sleep(120) # sleep before taking another reading (2 minutes between readings)
 
 	except	(IOError, TypeError) as e:
 		print ("Error", e)
