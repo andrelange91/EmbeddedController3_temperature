@@ -27,7 +27,7 @@ class SensorController
         $temperature = $data['Temperature'];
         $location = $data['Location'];
 
-        $url = "http://10.130.54.60/api/insertTemp";
+        $url = "http://10.130.17.33/api/insertTemp";
         $data = array("Temperature"=>$temperature,"RegisterTime"=>$registerTime, "Location"=>$location);
 
         ApiHelper::RegisterTemp($url, $data);
